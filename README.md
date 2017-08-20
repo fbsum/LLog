@@ -25,6 +25,7 @@ dependencies {
 
 ### Usage
 ```
+    LLog.init(true);
     LLog.e(log);
     LLog.e(tag, log);
     LLog.d(log);
