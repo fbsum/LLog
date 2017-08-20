@@ -6,6 +6,23 @@ Android log util
 * Locate code from log
 * Support for json log
 
+### Dependency
+Step 1. Add the JitPack repository to your build file
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+Step 2. Add the dependency
+```
+dependencies {
+    compile 'com.github.fbsum:LLog:1.0.0'
+}
+```
+
 ### Usage
 ```
     LLog.e(log);
@@ -15,9 +32,10 @@ Android log util
     LLog.json(json);
     LLog.json(tag,json);
 ```
+![result](http://7xsi11.com1.z0.glb.clouddn.com/llog_test_result.png)
 
-### Proguard
-Gradle config:
+### Proguard (Optional)
+Add gradle config:
 ```gradle
     buildTypes {
         release {
@@ -26,7 +44,7 @@ Gradle config:
         }
     }
 ```
-Proguard rules:
+Add proguard rules:
 ```
 # Delete LLog code
 -assumenosideeffects class com.fbsum.android.llog.LLog {

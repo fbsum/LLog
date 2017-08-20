@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private void test() {
         LLog.init(true);
 
-        LLog.e("test e");
-        LLog.e("TEST TAG", "test log");
-        LLog.d("test d");
-        LLog.d("TEST TAG", "test log");
+        LLog.e("test error msg");
+        LLog.e("TEST TAG", "test error msg");
+        LLog.d("test debug msg");
+        LLog.d("TEST TAG", "test debug msg");
         LLog.json("{\"key\" : \"value\"}");
         LLog.json("TEST TAG", "{\"key\" : \"value\"}");
     }
