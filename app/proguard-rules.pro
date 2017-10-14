@@ -83,4 +83,5 @@
     public static void d(...);
     public static void e(...);
     public static void json(...);
+    public static void list(...);
 }
