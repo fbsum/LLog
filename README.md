@@ -7,6 +7,7 @@ Android log util
 * Log without tag
 * Locate code from log
 * Support for json log
+* Support for list log
 
 ### Dependency
 Step 1. Add the JitPack repository to your build file
@@ -21,7 +22,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-    compile 'com.github.fbsum:LLog:1.1.0'
+    compile 'com.github.fbsum:LLog:1.2.0'
 }
 ```
 
@@ -34,8 +35,10 @@ dependencies {
     LLog.d(tag,log);
     LLog.json(json);
     LLog.json(tag,json);
+    LLog.list(list);
+    LLog.list(tag,list);
 ```
-![result](http://7xsi11.com1.z0.glb.clouddn.com/llog_test_result.png)
+![result](http://7xsi11.com1.z0.glb.clouddn.com/llog-test-result-v1.2.0.png)
 
 ### Proguard (Optional)
 Add gradle config:
@@ -55,6 +58,7 @@ Add proguard rules:
     public static void d(...);
     public static void e(...);
     public static void json(...);
+    public static void list(...);
 }
 ```
 
