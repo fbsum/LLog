@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/fbsum/LLog.svg)](https://jitpack.io/#fbsum/LLog)
+
 # LLog
 Android log util
 
