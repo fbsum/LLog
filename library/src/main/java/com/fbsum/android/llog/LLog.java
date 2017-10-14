@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 /**
  * Created by xin on 8/19/17.
  */
@@ -20,6 +22,7 @@ public final class LLog {
     public static final int E = 0x5;
     public static final int A = 0x6;
     private static final int JSON = 0x7;
+    private static final int LIST = 0x8;
 
     private static final int STACK_TRACE_INDEX = 4;
     private static final String JAVA_SUFFIX = ".java";
@@ -82,7 +85,21 @@ public final class LLog {
         printLog(JSON, tag, json);
     }
 
-    private static void printLog(int type, String tag, String log) {
+    public static <T> void list(List<T> list) {
+        if (!enable) {
+            return;
+        }
+        printLog(LIST, tag, list);
+    }
+
+    public static <T> void list(String tag, List<T> list) {
+        if (!enable) {
+            return;
+        }
+        printLog(LIST, tag, list);
+    }
+
+    private static void printLog(int type, String tag, Object obj) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement targetElement = stackTrace[STACK_TRACE_INDEX];
         String className = targetElement.getClassName();
@@ -107,16 +124,21 @@ public final class LLog {
 
         switch (type) {
             case D: {
-                Log.d(tag, location + log);
+                Log.d(tag, location + obj);
             }
             break;
             case E: {
-                Log.e(tag, location + log);
+                Log.e(tag, location + obj);
             }
             break;
             case JSON: {
-                printJson(tag, location, log);
+                printJson(tag, location, obj.toString());
             }
+            break;
+            case LIST: {
+                printList(tag, location, (List<Object>) obj);
+            }
+            break;
         }
     }
 
@@ -146,5 +168,19 @@ public final class LLog {
         }
         Log.e(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════");
     }
+
+    private static void printList(String tag, String location, List<Object> list) {
+        Log.e(tag, "╔═══════════════════════════════════════════════════════════════════════════════════════");
+        Log.e(tag, "║ " + location);
+        Log.e(tag, "║ [");
+        if (list != null) {
+            for (Object o : list) {
+                Log.e(tag, "║     " + o.toString() + ",");
+            }
+        }
+        Log.e(tag, "║ ]");
+        Log.e(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════");
+    }
+
 
 }

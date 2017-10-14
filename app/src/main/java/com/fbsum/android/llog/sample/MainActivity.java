@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         }
         LLog.e(items.toString());
 
+        LLog.e("test list");
+        LLog.list(items);
+
+
     }
 
     private static class Item {
