@@ -21,7 +21,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-    compile 'com.github.fbsum:LLog:1.0.0'
+    compile 'com.github.fbsum:LLog:1.1.0'
 }
 ```
 
